@@ -22,8 +22,6 @@ WORKDIR /app
 # Copia o JAR gerado no estágio de build
 COPY --from=builder /app/build/libs/Portifolio-1.0-SNAPSHOT-all.jar app.jar
 
-# Copia o arquivo .env (se necessário)
-COPY .env /app/.env
 
 # Expõe a porta 8080
 EXPOSE 8080
