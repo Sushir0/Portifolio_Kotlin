@@ -16,7 +16,7 @@ object appModule {
 
     // utils
     val utils = Utils
-    val dotenv = dotenv()
+    val dotenv = dotenv{ ignoreIfMissing = true}
 
     // image
     val imageRepository = SupabaseImagensRepository()
