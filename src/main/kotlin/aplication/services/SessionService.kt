@@ -7,8 +7,8 @@ import io.ktor.server.sessions.*
 
 class AuthService(private val call: ApplicationCall) {
 
-    private val ADMIN_USERNAME = dotenv["ADMIN_USERNAME"] ?: throw IllegalArgumentException("ADMIN_USERNAME environment variable not set")
-    private val ADMIN_PASSWORD = dotenv["ADMIN_PASSWORD"] ?: throw IllegalArgumentException("ADMIN_PASSWORD environment variable not set")
+    private val ADMIN_USERNAME = System.getenv("ADMIN_USERNAME") ?: dotenv["ADMIN_USERNAME"] ?: throw IllegalArgumentException("ADMIN_USERNAME environment variable not set")
+    private val ADMIN_PASSWORD = System.getenv("ADMIN_PASSWORD") ?: dotenv["ADMIN_PASSWORD"] ?: throw IllegalArgumentException("ADMIN_PASSWORD environment variable not set")
 
     fun login(username: String, password: String): Boolean {
 
