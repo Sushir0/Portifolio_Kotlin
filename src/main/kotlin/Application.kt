@@ -1,7 +1,6 @@
 
 import appModule.featureService
 import appModule.historicoService
-import appModule.projetoRepository
 import freemarker.cache.ClassTemplateLoader
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
@@ -11,7 +10,6 @@ import io.ktor.server.routing.*
 import appModule.projetoService
 import infrastructure.api.routes.*
 import infrastructure.session.configureSessions
-import kotlinx.coroutines.runBlocking
 
 fun Application.module() {
     install(FreeMarker) {

@@ -1,15 +1,27 @@
 plugins {
     kotlin("jvm") version "2.0.0"
-    kotlin("plugin.serialization") version "1.8.0" // Verifique se a versão está correta
-
+    kotlin("plugin.serialization") version "2.0.0" // Corrigido para 2.0.0
+    application
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
 
+application{
+    mainClass.set("ApplicationKt")
+}
+
+
+
+
 repositories {
     mavenCentral()
 }
+
+
+
+
 
 
 val ktor_version = "3.0.3"
@@ -50,6 +62,12 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.jar{
+    manifest{
+        attributes["Main-Class"] = application.mainClass.get()
+    }
 }
 kotlin {
     jvmToolchain(17)
