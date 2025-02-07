@@ -1,16 +1,28 @@
-# Usa uma imagem base com Java 17 (versão que você está usando no JVM Toolchain)
-FROM eclipse-temurin:17-jre-jammy
+# Estágio 1: Build (compilação)
+FROM eclipse-temurin:17-jdk-jammy as builder
 
-# Diretório de trabalho dentro do contêiner
+# Define o diretório de trabalho
 WORKDIR /app
 
-# Copia o JAR gerado pelo shadowJar para o contêiner
-COPY build/libs/Portifolio-1.0-SNAPSHOT-all.jar app.jar
+# Copia os arquivos do projeto
+COPY . .
 
+# Executa a build do projeto com o Gradle
+RUN ./gradlew shadowJar
+
+# Estágio 2: Execução (imagem final)
+FROM eclipse-temurin:17-jre-jammy
+
+# Define o diretório de trabalho
+WORKDIR /app
+
+# Copia o JAR gerado no estágio de build
+COPY --from=builder /app/build/libs/Portifolio-1.0-SNAPSHOT-all.jar app.jar
+
+# Copia o arquivo .env (se necessário)
 COPY .env /app/.env
 
-
-# Expõe a porta que o Ktor está usando (geralmente 8080)
+# Expõe a porta 8080
 EXPOSE 8080
 
 # Comando para executar o JAR
