@@ -37,17 +37,28 @@
     <!-- Masthead -->
     <header class="masthead text-white">
         <div class="container text-center">
-            <img src="static/images/imagem-perfil.jpg" class="masthead-avatar mb-4" alt="Ciro Roberto">
-            <h1 class="mb-3">Ciro Roberto</h1>
-            <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
-                <span class="badge-tech badge-tech-kotlin"><i class="fab fa-android"></i>Desenvolvedor Android</span>
-                <span class="badge-tech badge-tech-java"><i class="fab fa-java"></i>Java</span>
-                <span class="badge-tech badge-tech-kotlin"><i class="fas fa-mobile-alt"></i>Kotlin</span>
+            <div class="container ">
+                <div class="row">
+                    <div class="col-lg-6 text-center">
+                        <h1 class="mb-3">Ciro Roberto</h1>
+                        <img src="static/images/imagem-perfil.jpg" class="masthead-avatar mb-4" alt="Ciro Roberto">
+                    </div>
+                    <div class="col-lg-6">
+                        <p class="lead">Formado em <span class="emphasis">Informática pelo IFSul</span>. 
+                        <span class="emphasis">Desenvolvedor por paixão</span> e movido pela vontade de <span class="emphasis">criar soluções</span>. 
+                        Acredito que a tecnologia mais valiosa é aquela que se <span class="emphasis">integra ao dia a dia</span>, 
+                        facilitando tarefas e <span class="emphasis">resolvendo problemas reais</span>. 
+                        Minha meta é desenvolver <span class="emphasis">mais do que linhas de código</span>, 
+                        mas ferramentas que <span class="emphasis">gerem impacto positivo</span> e simplifiquem a vida das pessoas.
+                        </p>
+                    </div>
+                    
+                </div>
             </div>
-            <div class="tech-stack">
-                <span class="badge-tech badge-tech-compose"><i class="fas fa-paint-brush"></i>Compose</span>
-                <span class="badge-tech badge-tech-mvvm"><i class="fas fa-sitemap"></i>MVVM</span>
-                <span class="badge-tech badge-tech-cleanarchitecture"><i class="fas fa-code"></i>Clean Architecture</span>
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+                <#list tags as tag>
+                    <span class="badge-tech badge-tech-${tag}">${tag}</span>
+                </#list>
             </div>
         </div>
     </header>

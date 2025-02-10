@@ -1,5 +1,6 @@
 package infrastructure.utils
 
+import domain.models.Projeto
 import java.security.MessageDigest
 import java.text.SimpleDateFormat
 import java.util.*
@@ -19,6 +20,8 @@ object Utils{
         val hash = digest.digest("$originalName$timeStamp".toByteArray())
         return hash.joinToString("") { "%02x".format(it) }
     }
+
+    fun getTagsFromProjetos(projetos: List<Projeto>) = projetos.map { it.tags }.flatten().toSet().toList()
 
 
     fun toDate(timestamp: String): Date {

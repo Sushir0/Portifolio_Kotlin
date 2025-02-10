@@ -7,6 +7,7 @@ import io.ktor.server.http.content.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import aplication.services.ProjetoService
+import infrastructure.utils.Utils.getTagsFromProjetos
 import io.ktor.http.*
 
 
@@ -19,7 +20,13 @@ fun Route.mainRoutes(
             val authService = AuthService(call)
             val isAuthenticated = authService.isAuthenticated()
 
-            call.respond(FreeMarkerContent("index.ftl", mapOf("projetos" to projetos.getOrThrow(), "isAuthenticated" to isAuthenticated)))
+            val tags = getTagsFromProjetos(projetos.getOrThrow())
+
+            call.respond(FreeMarkerContent("index.ftl", mapOf(
+                "projetos" to projetos.getOrThrow(),
+                "isAuthenticated" to isAuthenticated,
+                "tags" to tags
+                )))
         } else {
             call.respondText("Failed to load projects", status = HttpStatusCode.InternalServerError)
         }
