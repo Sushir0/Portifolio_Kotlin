@@ -125,7 +125,7 @@
         <div class="container">
             <div class="contact-card">
                 <h2 class="text-center mb-4">Vamos Conectar!</h2>
-                <div class="d-flex justify-content-center gap-3">
+                <div class="d-flex flex-wrap justify-content-center gap-3">
                     <a href="https://linkedin.com/in/ciro-roberto" class="btn btn-outline-light btn-lg">
                         <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
