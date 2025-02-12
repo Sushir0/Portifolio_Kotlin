@@ -56,7 +56,7 @@
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a href="/admin" class="btn btn-secondary">Cancelar</a>
-                <button type="submit" class="btn btn-success">Salvar feature</button>
+                <button type="submit" class="btn btn-success">Salvar histórico</button>
             </div>
         </form>
     </div>
