@@ -102,7 +102,7 @@
                                     <div class="feature-text-content ps-md-4">
                                         <h3 class="feature-title mb-3">${feature.name}</h3>
                                         <div class="feature-text mb-4">${feature.text}</div>
-                                        <div class="update-date text-muted">
+                                        <div class="update-date">
                                             <small>
                                                 Criado em: ${feature.createdAt?string['dd/MM/yyyy']}
                                                 <#if isAuthenticated>
