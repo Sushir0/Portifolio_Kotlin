@@ -188,7 +188,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Cores específicas para cada tecnologia */
 .badge-tech-compose { background: #512da8; }
-.badge-tech-androidsdk { background: #388e3c; }
+.badge-tech-android { background: #388e3c; }
 .badge-tech-retrofit { background: #e65100; }
 .badge-tech-room { background: #7b1fa2; }
 .badge-tech-firebase { background: #d32f2f; }
@@ -202,6 +202,18 @@ h1, h2, h3, h4, h5, h6 {
 .badge-tech-cleanarchitecture { background: #689f38; }
 .badge-tech-kotlin { background: #7b1fa2; }
 .badge-tech-java { background: #ef6c00; }
+.badge-tech-xml { background: #8bc34a; color: #000; }
+.badge-tech-android_studio { background: #00897b; }
+.badge-tech-ui_ux { background: #f06292; }
+.badge-tech-poo { background: #7e57c2; }
+.badge-tech-html { background: #e34c26; }
+.badge-tech-css { background: #264de4; color: #fff; }
+.badge-tech-javascript { background: #f0db4f; color: #000; }
+.badge-tech-fullstack { background: #000000; color: #fff; }
+.badge-tech-docker { background: #2496ed; color: #fff; }
+.badge-tech-supabase { background: #3ECF8E; color: #000; }
+.badge-tech-ktor { background: #1c6c64; color: #fff; }
+
 
 .dark-mode .btn-outline-light {
     color: var(--text-color);
