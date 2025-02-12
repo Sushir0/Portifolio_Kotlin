@@ -69,7 +69,6 @@
             <div class="container">
                 <h2 class="section-title">Descrição do Projeto</h2>
                 <div class="content-box">
-                    <p class="lead">${projeto.description}</p>
                     <div class="detailed-text">${projeto.text}</div>
                 </div>
             </div>
