@@ -38,7 +38,7 @@
     <header class="masthead text-white">
         <div class="container text-center">
             <div class="container ">
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-lg-6 text-center">
                         <h1 class="mb-3">Ciro Roberto</h1>
                         <img src="static/images/imagem-perfil.jpg" class="masthead-avatar mb-4 cursor-pointer" alt="Ciro Roberto" data-bs-toggle="modal" data-bs-target="#imagemModal">
