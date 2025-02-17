@@ -39,7 +39,7 @@
     <header class="project-header text-white">
         <div class="container text-center">
             <div class="project-header-content">
-                <img src="${projeto.imagePath}" class="project-main-image" alt="${projeto.name}">
+                <img src="${projeto.imagePath}" class="project-main-image" alt="${projeto.name}" data-bs-toggle="modal" data-bs-target="#imagem_projeto">
                 <h1 class="mt-4 mb-3">${projeto.name}</h1>
                 <div class="project-metadata">
                     <div class="metadata-item">
@@ -93,7 +93,9 @@
                                     <div class="fixed-image-wrapper">
                                         <img src="${feature.imagePath}" 
                                             class="d-block w-100 h-100" 
-                                            alt="Imagem de ${feature.name}">
+                                            alt="Imagem de ${feature.name}"
+                                            data-bs-toggle="modal" 
+                                            data-bs-target="#imagem_feature_${feature.id}">
                                     </div>
                                 </div>
                                 
@@ -162,6 +164,34 @@
     </div>
 </section>
     </main>
+
+    <div class="modal fade" id="imagem_projeto" tabindex="-1" aria-labelledby="imagemModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="${projeto.imagePath}" class="img-fluid rounded" alt="imagem do ${projeto.name}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <#list projeto.features as feature>
+        <div class="modal fade" id="imagem_feature_${feature.id}" tabindex="-1" aria-labelledby="imagemModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content bg-transparent border-0">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="${feature.imagePath}" class="img-fluid rounded" alt="imagem do ${feature.name}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </#list>
 
     <!-- Theme Toggle e scripts (mantidos da página principal) -->
     <button id="button-toggle-theme" class="btn btn-primary theme-toggle" onclick="toggleTheme()">

@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-lg-6 text-center">
                         <h1 class="mb-3">Ciro Roberto</h1>
-                        <img src="static/images/imagem-perfil.jpg" class="masthead-avatar mb-4" alt="Ciro Roberto">
+                        <img src="static/images/imagem-perfil.jpg" class="masthead-avatar mb-4 cursor-pointer" alt="Ciro Roberto" data-bs-toggle="modal" data-bs-target="#imagemModal">
                     </div>
                     <div class="col-lg-6">
                         <p class="lead">Formado em <span class="emphasis">Informática pelo IFSul</span>. 
@@ -139,6 +139,35 @@
             </div>
         </div>
     </section>
+
+
+
+    <div class="modal fade" id="imagemModal" tabindex="-1" aria-labelledby="imagemModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-transparent border-0">
+            <div class="modal-header border-0">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="static/images/imagem-perfil.jpg" class="img-fluid rounded" alt="Ciro Roberto em tamanho maior">
+            </div>
+            </div>
+        </div>
+    </div>
+
+<style>
+.cursor-pointer {
+  cursor: pointer;
+}
+.modal-content {
+  max-height: 90vh;
+}
+.modal-content img {
+  max-height: 80vh;
+  object-fit: contain;
+}
+</style>
+
 
     <!-- Theme Toggle -->
     <button id="button-toggle-theme" class="btn btn-primary theme-toggle" onclick="toggleTheme()">
