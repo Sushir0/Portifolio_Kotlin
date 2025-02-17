@@ -190,7 +190,7 @@ h1, h2, h3, h4, h5, h6 {
 .badge-tech-compose { background: #512da8; }
 .badge-tech-android { background: #388e3c; }
 .badge-tech-retrofit { background: #e65100; }
-.badge-tech-room { background: #7b1fa2; }
+.badge-tech-roomdb { background: #7b1fa2; }
 .badge-tech-firebase { background: #d32f2f; }
 .badge-tech-junit { background: #0097a7; }
 .badge-tech-git { background: #ad1457; }
@@ -198,7 +198,7 @@ h1, h2, h3, h4, h5, h6 {
 .badge-tech-materialdesign { background: #303f9f; }
 .badge-tech-coroutines { background: #00796b; }
 .badge-tech-flow { background: #fbc02d; color: #000; }
-.badge-tech-mvvm { background: #455a64; }
+.badge-tech-mvvm { background: #3b5866; }
 .badge-tech-cleanarchitecture { background: #689f38; }
 .badge-tech-kotlin { background: #7b1fa2; }
 .badge-tech-java { background: #ef6c00; }
@@ -213,6 +213,7 @@ h1, h2, h3, h4, h5, h6 {
 .badge-tech-docker { background: #2496ed; color: #fff; }
 .badge-tech-supabase { background: #3ECF8E; color: #000; }
 .badge-tech-ktor { background: #1c6c64; color: #fff; }
+.badge-tech-sqlite { background: #003b57; color: #fff; }
 
 
 .dark-mode .btn-outline-light {

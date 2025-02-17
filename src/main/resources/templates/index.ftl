@@ -57,7 +57,7 @@
             </div>
             <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
                 <#list tags as tag>
-                    <span class="badge-tech badge-tech-${tag}">${tag}</span>
+                    <span class="badge-tech badge-tech-${tag?lower_case}">${tag}</span>
                 </#list>
             </div>
         </div>
