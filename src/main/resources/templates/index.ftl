@@ -105,18 +105,28 @@
         <div class="container">
             <h2 class="text-center mb-5">Sobre Mim</h2>
             <div class="row">
-                <div class="col-lg-6">
-                    <p class="lead">Formado em Informática pelo IFSul. Desenvolvedor mobile e backend, 
-                    com foco em Kotlin, Jetpack Compose e bancos de dados relacionais.
-                    <br>
-                    Atuo em projetos próprios desde 2022, como um app de finanças em desenvolvimento, 
-                    explorando arquitetura limpa e otimização de dados. Acredito em código simples, 
-                    eficiente e soluções que impactem o cotidiano.</p>
-                </div>
-                <div class="col-lg-6">
-                    <!-- Conteúdo sobre habilidades -->
-                </div>
-            </div>
+    <div class="col-lg-6">
+        <p class="lead">
+            Nasci em São Jerônimo, no Rio Grande do Sul. 
+            Atualmente, dedico meu tempo a projetos pessoais como desenvolvedor de aplicativos para Android e backend, 
+            sempre em busca de evolução e de adquirir mais experiência na área.
+            <br>
+            Estudei no IFSul, onde fiz um curso técnico integrado ao ensino médio em Informática. 
+            Foi nesse ambiente que fui inserido no mundo da tecnologia, 
+            começando a aprender e me interessar por programação e desenvolvimento de software, o que motivou meus projetos pessoais na área.
+        </p>
+    </div>
+    <div class="col-lg-6">
+        <p class="lead">
+            Além da tecnologia, tenho paixão por fotografia de paisagens, 
+            explorar novos lugares e aproveitar os pequenos momentos da vida. 
+            Também gosto de assistir a bons filmes ou simplesmente dar uma caminhada para relaxar.
+            <br>
+            Acredito que a vida é um equilíbrio entre trabalho e lazer, desafios e momentos de descanso. 
+            E no fim das contas, estou sempre em busca  de apreciar as pequenas coisas do cotidiano.
+        </p>
+    </div>
+</div>
         </div>
     </section>
 

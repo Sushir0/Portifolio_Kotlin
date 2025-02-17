@@ -93,7 +93,7 @@ h1, h2, h3, h4, h5, h6 {
 .about-section{
     background: var(--gradient);
     padding: 8rem 0 4rem;
-    clip-path: polygon(0 20%, 100% 0, 100% 80%, 0 100%);
+    clip-path: polygon(0 05%, 100% 0, 100% 95%, 0 100%);
 }
 
 .page-section {
