@@ -6,7 +6,7 @@
     <meta name="description" content="Login de Administração - Ciro Roberto" />
     <meta name="author" content="Ciro Roberto" />
     <title>Admin Login - Ciro Roberto</title>
-    <link rel="icon" type="image/x-icon" href="assets/icone.png" />
+    <link rel="icon" type="image/x-icon" href="/static/images/icon.png" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
