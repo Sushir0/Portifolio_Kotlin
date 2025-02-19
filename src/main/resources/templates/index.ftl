@@ -165,18 +165,7 @@
         </div>
     </div>
 
-<style>
-.cursor-pointer {
-  cursor: pointer;
-}
-.modal-content {
-  max-height: 90vh;
-}
-.modal-content img {
-  max-height: 80vh;
-  object-fit: contain;
-}
-</style>
+
 
 
     <!-- Theme Toggle -->

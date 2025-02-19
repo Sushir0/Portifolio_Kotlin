@@ -39,7 +39,7 @@
     <header class="project-header text-white">
         <div class="container text-center">
             <div class="project-header-content">
-                <img src="${projeto.imagePath}" class="project-main-image" alt="${projeto.name}" data-bs-toggle="modal" data-bs-target="#imagem_projeto">
+                <img src="${projeto.imagePath}" class="project-main-image cursor-pointer" alt="${projeto.name}" data-bs-toggle="modal" data-bs-target="#imagem_projeto">
                 <h1 class="mt-4 mb-3">${projeto.name}</h1>
                 <div class="project-metadata">
                     <div class="metadata-item">
@@ -92,7 +92,7 @@
                                 <div class="col-md-6 image-container">
                                     <div class="fixed-image-wrapper">
                                         <img src="${feature.imagePath}" 
-                                            class="d-block w-100 h-100" 
+                                            class="d-block w-100 h-100 cursor-pointer" 
                                             alt="Imagem de ${feature.name}"
                                             data-bs-toggle="modal" 
                                             data-bs-target="#imagem_feature_${feature.id}">
