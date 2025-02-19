@@ -590,6 +590,37 @@ h1, h2, h3, h4, h5, h6 {
     100% { text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.3); }
 }
 
+.stat-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--card-border);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon {
+    color: var(--primary-color);
+    opacity: 0.9;
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--heading-color);
+}
+
 
 
 .cursor-pointer {

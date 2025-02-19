@@ -130,6 +130,36 @@
         </div>
     </section>
 
+    <!-- Statistics Section -->
+    <section class="page-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Estatísticas do Site</h2>
+            <div class="row justify-content-center g-4">
+                <!-- Unique Visitors Card -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="stat-card text-center p-4 h-100">
+                        <div class="stat-icon mb-3">
+                            <i class="fas fa-users fa-3x"></i>
+                        </div>
+                        <h3 class="stat-number mb-2">${visitantesUnicos}</h3>
+                        <p class="stat-label mb-0">Visitantes Únicos</p>
+                    </div>
+                </div>
+
+                <!-- Total Visits Card -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="stat-card text-center p-4 h-100">
+                        <div class="stat-icon mb-3">
+                            <i class="fas fa-eye fa-3x"></i>
+                        </div>
+                        <h3 class="stat-number mb-2">${visitasTotais}</h3>
+                        <p class="stat-label mb-0">Visitas Totais</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="page-section">
         <div class="container">

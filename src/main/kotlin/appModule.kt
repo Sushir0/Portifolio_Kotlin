@@ -1,14 +1,8 @@
-import aplication.services.FeatureService
-import aplication.services.HistoricoService
-import aplication.services.ImageService
-import aplication.services.ProjetoService
+import aplication.services.*
 import aplication.validation.feature.FeatureValidatorMock
 import aplication.validation.historico.HistoricoValidatorMock
 import aplication.validation.projeto.ProjetoValidatorMock
-import infrastructure.db.supabase.repositories.SupabaseFeatureRepository
-import infrastructure.db.supabase.repositories.SupabaseHistoricoRepository
-import infrastructure.db.supabase.repositories.SupabaseImagensRepository
-import infrastructure.db.supabase.repositories.SupabaseProjetoRepository
+import infrastructure.db.supabase.repositories.*
 import infrastructure.utils.Utils
 import io.github.cdimascio.dotenv.dotenv
 
@@ -36,4 +30,9 @@ object appModule {
     val historicoRepository = SupabaseHistoricoRepository()
     val historicoValidator = HistoricoValidatorMock
     val historicoService = HistoricoService(historicoRepository, historicoValidator)
+
+    // visitLog
+    val visitLogRepository = SupabaseVisitLogRepository()
+    val visitLogService = VisitLogService(visitLogRepository)
+
 }

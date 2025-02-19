@@ -8,8 +8,12 @@ import io.ktor.server.freemarker.*
 import io.ktor.server.netty.*
 import io.ktor.server.routing.*
 import appModule.projetoService
+import appModule.visitLogService
 import infrastructure.api.routes.*
 import infrastructure.session.configureSessions
+import io.ktor.server.plugins.*
+import io.ktor.server.request.*
+import kotlinx.coroutines.launch
 
 fun Application.module() {
     install(FreeMarker) {
@@ -20,6 +24,7 @@ fun Application.module() {
 
 
     configureSessions()
+    configureTracking()
 
     routing {
         projetoRoutes(projetoService)
@@ -28,6 +33,30 @@ fun Application.module() {
         AuthRoutes()
         adminRoutes()
         historicoRoutes(historicoService)
+    }
+}
+
+fun Application.configureTracking(){
+    intercept(ApplicationCallPipeline.Monitoring){
+
+        val ipAddress = call.request.origin.remoteHost
+        val page = call.request.uri
+
+        val ignore_paths = listOf(
+            "/static",
+            "/favicon.ico"
+        )
+
+        if(ignore_paths.any{ page.startsWith(it) }) {
+            return@intercept
+        }
+
+        launch {
+            visitLogService.create(
+                ipAddress = ipAddress,
+                page = page
+            )
+        }
     }
 }
 

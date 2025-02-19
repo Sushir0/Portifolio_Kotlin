@@ -23,11 +23,13 @@ object SupabaseService{
     val tableHistoricos = System.getenv("SUPABASE_TABLE_HISTORICOS") ?: dotenv["SUPABASE_TABLE_HISTORICOS"] ?: throw IllegalArgumentException("SUPABASE_TABLE_HISTORICOS environment variable not set")
     val tableFeatures = System.getenv("SUPABASE_TABLE_FEATURES") ?: dotenv["SUPABASE_TABLE_FEATURES"] ?: throw IllegalArgumentException("SUPABASE_TABLE_FEATURES environment variable not set")
     val storageImagens = System.getenv("SUPABASE_STORAGE_IMAGENS") ?: dotenv["SUPABASE_STORAGE_IMAGENS"] ?: throw IllegalArgumentException("SUPABASE_STORAGE_IMAGENS environment variable not set")
+    val tableVisitLog = System.getenv("SUPABASE_TABLE_VISIT_LOGS") ?: dotenv["SUPABASE_TABLE_VISIT_LOGS"] ?: throw IllegalArgumentException("SUPABASE_TABLE_VISIT_LOGS environment variable not set")
 
 
     val supabaseProjetos = supabase.postgrest[tableProjetos]
     val supabaseHistoricos = supabase.postgrest[tableHistoricos]
     val supabaseFeatures = supabase.postgrest[tableFeatures]
+    val supabaseVisitLogs = supabase.postgrest[tableVisitLog]
     val supabaseImages = supabase.storage[storageImagens]
 
 }

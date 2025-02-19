@@ -30,7 +30,7 @@
     </nav>
 
     <!-- Admin Content -->
-    <div class="container mt-5 pt-5">
+    <div class="container mt-5 mb-5 pt-5">
         <h2 class="text-center mb-4">Gerenciar Projetos</h2>
         <div class="text-end mb-3">
             <a href="/projeto/create" class="btn btn-success"><i class="fas fa-plus"></i> Novo Projeto</a>
@@ -54,6 +54,81 @@
             </#list>
         </div>
     </div>
+
+    <!-- gráficos -->
+    <div class="container mb-5 mt-5">
+        <div class="row">    
+            <div class="col-lg-6 text-center">
+                <h2 class="text-center mb-4">Estatísticas de Visitas totais</h2>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="instanciaChartTotais.update7Days()">7 Dias</button>
+                    <button class="btn btn-primary" onclick="instanciaChartTotais.update30Days()">30 Dias</button>
+                    <button class="btn btn-primary" onclick="instanciaChartTotais.update1Year()">1 Ano</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="chartTotais"></canvas>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <h2 class="text-center mb-4">Estatísticas de Visitas únicas</h2>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="instanciaChartUnicas.update7Days()">7 Dias</button>
+                    <button class="btn btn-primary" onclick="instanciaChartUnicas.update30Days()">30 Dias</button>
+                    <button class="btn btn-primary" onclick="instanciaChartUnicas.update1Year()">1 Ano</button>
+                </div>
+                <div class="chart-container">
+                    <canvas id="chartUnicas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/static/js/utils.js"></script>
+<script src="/static/js/chart.js"></script>
+
+<script>  
+    // Dados convertidos para o formato correto
+    const visitLogsTotais = [
+        <#list visitLogsTotais as log>
+            { 
+                date: "${log.accessedAt}"
+            }<#if log_has_next>,</#if>
+        </#list>
+    ];
+
+    const visitLogsUnicas = [
+        <#list visitLogsUnicos as log>
+            { 
+                date: "${log.accessedAt}"
+            }<#if log_has_next>,</#if>
+        </#list>
+    ];
+
+
+    const instanciaChartTotais = new ChartFactory('chartTotais', visitLogsTotais);
+    const instanciaChartUnicas = new ChartFactory('chartUnicas', visitLogsUnicas);
+
+    instanciaChartTotais.update7Days();
+    instanciaChartUnicas.update7Days();
+</script>
+
+    <style>
+        .chart-container {
+            position: relative;
+            margin: 20px auto;
+            height: 400px;
+            width: 100%;
+        }
+        .btn-group { margin-bottom: 20px; }
+    </style>
+
+
+
+
 
     <!-- Theme Toggle -->
     <button id="button-toggle-theme" class="btn btn-primary theme-toggle" onclick="toggleTheme()">

@@ -21,9 +21,6 @@ object Utils{
         return hash.joinToString("") { "%02x".format(it) }
     }
 
-    fun getTagsFromProjetos(projetos: List<Projeto>) = projetos.map { it.tags }.flatten().toSet().toList()
-
-
     fun toDate(timestamp: String): Date {
 
         for (format in formats) {
@@ -50,6 +47,16 @@ object Utils{
         }
         throw IllegalArgumentException("Formato de data inválido: $date")
     }
+
+    fun formatarDataParaIso(data: Date): String {
+        val formatoIso = SimpleDateFormat("yyyy-MM-dd", Locale("pt", "BR"))
+        return formatoIso.format(data)
+    }
+
+
+
+
+    fun getTagsFromProjetos(projetos: List<Projeto>) = projetos.map { it.tags }.flatten().toSet().toList()
 
 
 }
