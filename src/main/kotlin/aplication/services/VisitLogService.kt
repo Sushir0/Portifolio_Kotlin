@@ -2,7 +2,7 @@ package aplication.services
 
 import aplication.dto.visitLog.VisitLogDTO
 import aplication.dto.visitLog.VisitLogPresentationModel
-import domain.models.VisitLog
+import domain.models.visitLog.VisitGraph
 import domain.repository.VisitLogRepository
 
 class VisitLogService(
@@ -27,5 +27,39 @@ class VisitLogService(
         val visitLogs = visitLogsResult.getOrThrow()
         return Result.success(visitLogs.map { it.toPresentationModel() })
     }
+
+    suspend fun getVisitasTotais(): Result<Int>{
+        return visitLogRepository.getVisitasTotais()
+    }
+
+    suspend fun getVisitantesUnicos(): Result<Int>{
+        return visitLogRepository.getVisitantesUnicos()
+    }
+
+    suspend fun getGraficoTotalSemanal(): Result<List<VisitGraph>>{
+        return visitLogRepository.getGraficoTotalSemanal()
+    }
+
+    suspend fun getGraficoTotalMensal(): Result<List<VisitGraph>>{
+        return visitLogRepository.getGraficoTotalMensal()
+    }
+
+    suspend fun getGraficoTotalAnual(): Result<List<VisitGraph>>{
+        return visitLogRepository.getGraficoTotalAnual()
+    }
+
+    suspend fun getGraficoUniqueIpSemanal(): Result<List<VisitGraph>>{
+        return visitLogRepository.getGraficoUniqueIpSemanal()
+    }
+
+    suspend fun getGraficoUniqueIpMensal(): Result<List<VisitGraph>>{
+        return visitLogRepository.getGraficoUniqueIpMensal()
+    }
+
+    suspend fun getGraficoUniqueIpAnual(): Result<List<VisitGraph>>{
+        return visitLogRepository.getGraficoUniqueIpAnual()
+    }
+
+
 
 }

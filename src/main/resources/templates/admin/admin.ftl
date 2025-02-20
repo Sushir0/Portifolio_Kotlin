@@ -91,29 +91,64 @@
 <script src="/static/js/chart.js"></script>
 
 <script>  
-    // Dados convertidos para o formato correto
-    const visitLogsTotais = [
-        <#list visitLogsTotais as log>
-            { 
-                date: "${log.accessedAt}"
-            }<#if log_has_next>,</#if>
+    const graficoTotalSemanal = [
+        <#list graficoTotalSemanal as item>
+            {
+                start_date: "${item.start_date}",
+                view_count: ${item.view_count}
+            }<#if item_has_next>,</#if>
         </#list>
     ];
+    const graficoUniqueIpSemenal = [
+        <#list graficoUniqueIpSemanal as item>
+            {
+                start_date: "${item.start_date}",
+                view_count: ${item.view_count}
+            }<#if item_has_next>,</#if>
+        </#list>
+    ]
 
-    const visitLogsUnicas = [
-        <#list visitLogsUnicos as log>
-            { 
-                date: "${log.accessedAt}"
-            }<#if log_has_next>,</#if>
+    const graficoTotalMensal = [
+        <#list graficoTotalMensal as item>
+            {
+                start_date: "${item.start_date}",
+                view_count: ${item.view_count}
+            }<#if item_has_next>,</#if>
         </#list>
     ];
+    const graficoUniqueIpMensal = [
+        <#list graficoUniqueIpMensal as item>
+            {
+                start_date: "${item.start_date}",
+                view_count: ${item.view_count}
+            }<#if item_has_next>,</#if>
+        </#list>
+    ]
 
+    const graficoTotalAnual = [
+        <#list graficoTotalAnual as item>
+            {
+                start_date: "${item.start_date}",
+                view_count: ${item.view_count}
+            }<#if item_has_next>,</#if>
+        </#list>
+    ];
+    const graficosUniqueIpAnual = [
+        <#list graficoUniqueIpAnual as item>
+            {
+                start_date: "${item.start_date}",
+                view_count: ${item.view_count}
+            }<#if item_has_next>,</#if>
+        </#list>
+    ]
 
-    const instanciaChartTotais = new ChartFactory('chartTotais', visitLogsTotais);
-    const instanciaChartUnicas = new ChartFactory('chartUnicas', visitLogsUnicas);
-
+    const instanciaChartTotais = new ChartFactory('chartTotais', graficoTotalSemanal, graficoTotalMensal, graficoTotalAnual);
+    const instanciaChartUnicas = new ChartFactory('chartUnicas', graficoUniqueIpSemenal, graficoUniqueIpMensal, graficosUniqueIpAnual);
     instanciaChartTotais.update7Days();
     instanciaChartUnicas.update7Days();
+
+
+    
 </script>
 
     <style>

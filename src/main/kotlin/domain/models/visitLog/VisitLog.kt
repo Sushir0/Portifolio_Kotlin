@@ -1,4 +1,4 @@
-package domain.models
+package domain.models.visitLog
 
 import aplication.dto.visitLog.VisitLogPresentationModel
 import infrastructure.utils.Utils

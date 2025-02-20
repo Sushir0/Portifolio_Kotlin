@@ -17,27 +17,46 @@ fun Route.adminRoutes() {
     route("/admin") {
         needAuth()
         get {
-            val visitLogsResult = visitLogService.getAll()
             val projetosResult = projetoService.getAllProjetos()
+            val graficoTotalSemanalResult = visitLogService.getGraficoTotalSemanal()
+            val graficoTotalMensalResult = visitLogService.getGraficoTotalMensal()
+            val graficoTotalAnualResult = visitLogService.getGraficoTotalAnual()
+            val graficoUniqueIpSemanalResult = visitLogService.getGraficoUniqueIpSemanal()
+            val graficoUniqueIpMensalResult = visitLogService.getGraficoUniqueIpMensal()
+            val graficoUniqueIpAnualResult = visitLogService.getGraficoUniqueIpAnual()
+
+
             if (projetosResult.isFailure) {
                 call.respondText("Failed to load projects", status = HttpStatusCode.InternalServerError)
                 return@get
             }
-            if (visitLogsResult.isFailure) {
+            if (graficoTotalSemanalResult.isFailure || graficoTotalMensalResult.isFailure || graficoTotalAnualResult.isFailure) {
                 call.respondText("Failed to load visit logs", status = HttpStatusCode.InternalServerError)
                 return@get
             }
-            val visitLogs = visitLogsResult.getOrThrow()
+            if (graficoUniqueIpSemanalResult.isFailure || graficoUniqueIpMensalResult.isFailure || graficoUniqueIpAnualResult.isFailure){
+                call.respondText("Failed to load visit logs", status = HttpStatusCode.InternalServerError)
+                return@get
+            }
+
             val projetos = projetosResult.getOrThrow()
-            val visitLogsTotais = visitLogs
-            // lista de visit logs sem repetição de ipAddress
-            val visitLogsUnicos = visitLogs.distinctBy{ it.ipAddress }
+            val graficoTotalSemanal = graficoTotalSemanalResult.getOrThrow()
+            val graficoTotalMensal = graficoTotalMensalResult.getOrThrow()
+            val graficoTotalAnual = graficoTotalAnualResult.getOrThrow()
+            val graficoUniqueIpSemanal = graficoUniqueIpSemanalResult.getOrThrow()
+            val graficoUniqueIpMensal = graficoUniqueIpMensalResult.getOrThrow()
+            val graficoUniqueIpAnual = graficoUniqueIpAnualResult.getOrThrow()
+
 
             call.respond(FreeMarkerContent("/admin/admin.ftl",
                 mapOf(
                     "projetos" to projetos,
-                    "visitLogsTotais" to visitLogsTotais,
-                    "visitLogsUnicos" to visitLogsUnicos
+                    "graficoTotalSemanal" to graficoTotalSemanal,
+                    "graficoTotalMensal" to graficoTotalMensal,
+                    "graficoTotalAnual" to graficoTotalAnual,
+                    "graficoUniqueIpSemanal" to graficoUniqueIpSemanal,
+                    "graficoUniqueIpMensal" to graficoUniqueIpMensal,
+                    "graficoUniqueIpAnual" to graficoUniqueIpAnual
                 )))
 
 

@@ -21,16 +21,16 @@ fun Route.mainRoutes(
             val isAuthenticated = authService.isAuthenticated()
 
             val tags = getTagsFromProjetos(projetos.getOrThrow())
-            val visitLogsResult = visitLogService.getAll()
+            val visitantesUnicosResult = visitLogService.getVisitantesUnicos()
+            val visitasTotaisResult = visitLogService.getVisitasTotais()
 
-            if (visitLogsResult.isFailure) {
+            if (visitantesUnicosResult.isFailure || visitasTotaisResult.isFailure) {
                 call.respondText("Failed to load visit logs", status = HttpStatusCode.InternalServerError)
                 return@get
             }
 
-            val visitLogs = visitLogsResult.getOrThrow()
-            val visitasTotais = visitLogs.size
-            val visitantesUnicos = visitLogs.distinctBy { it.ipAddress }.size
+            val visitantesUnicos = visitantesUnicosResult.getOrThrow()
+            val visitasTotais = visitasTotaisResult.getOrThrow()
 
             call.respond(FreeMarkerContent("index.ftl", mapOf(
                 "projetos" to projetos.getOrThrow(),
