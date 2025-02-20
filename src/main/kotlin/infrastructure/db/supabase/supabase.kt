@@ -19,19 +19,19 @@ object SupabaseService{
         install(Storage)
     }
 
-    val tableProjetos = System.getenv("SUPABASE_TABLE_PROJETOS") ?: dotenv["SUPABASE_TABLE_PROJETOS"] ?: throw IllegalArgumentException("SUPABASE_TABLE_PROJETOS environment variable not set")
-    val tableHistoricos = System.getenv("SUPABASE_TABLE_HISTORICOS") ?: dotenv["SUPABASE_TABLE_HISTORICOS"] ?: throw IllegalArgumentException("SUPABASE_TABLE_HISTORICOS environment variable not set")
-    val tableFeatures = System.getenv("SUPABASE_TABLE_FEATURES") ?: dotenv["SUPABASE_TABLE_FEATURES"] ?: throw IllegalArgumentException("SUPABASE_TABLE_FEATURES environment variable not set")
-    val storageImagens = System.getenv("SUPABASE_STORAGE_IMAGENS") ?: dotenv["SUPABASE_STORAGE_IMAGENS"] ?: throw IllegalArgumentException("SUPABASE_STORAGE_IMAGENS environment variable not set")
-    val tableVisitLog = System.getenv("SUPABASE_TABLE_VISIT_LOGS") ?: dotenv["SUPABASE_TABLE_VISIT_LOGS"] ?: throw IllegalArgumentException("SUPABASE_TABLE_VISIT_LOGS environment variable not set")
-    val viewCountUniqueIp = System.getenv("SUPABASE_COUNT_UNIQUE_IP_VIEW") ?: dotenv["SUPABASE_COUNT_UNIQUE_IP_VIEW"] ?: throw IllegalArgumentException("SUPABASE_COUNT_UNIQUE_IP_VIEW environment variable not set")
-    val viewTotalCount = System.getenv("SUPABASE_COUNT_TOTAL_VIEW") ?: dotenv["SUPABASE_COUNT_TOTAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_COUNT_TOTAL_VIEW environment variable not set")
-    val viewGraficoTotalSemanal = System.getenv("SUPABASE_GRAFICO_TOTAL_SEMANAL_VIEW") ?: dotenv["SUPABASE_GRAFICO_TOTAL_SEMANAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_GRAFICO_TOTAL_SEMANAL_VIEW environment variable not set")
-    val viewGraficoTotalMensal = System.getenv("SUPABASE_GRAFICO_TOTAL_MENSAL_VIEW") ?: dotenv["SUPABASE_GRAFICO_TOTAL_MENSAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_GRAFICO_TOTAL_MENSAL_VIEW environment variable not set")
-    val viewGraficoTotalAnual = System.getenv("SUPABASE_GRAFICO_TOTAL_ANUAL_VIEW") ?: dotenv["SUPABASE_GRAFICO_TOTAL_ANUAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_GRAFICO_TOTAL_ANUAL_VIEW environment variable not set")
-    val viewGraficoUniqueIpSemanal = System.getenv("SUPABASE_GRAFICO_UNIQUE_IP_SEMANAL_VIEW") ?: dotenv["SUPABASE_GRAFICO_UNIQUE_IP_SEMANAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_GRAFICO_UNIQUE_IP_SEMANAL_VIEW environment variable not set")
-    val viewGraficoUniqueIpMensal = System.getenv("SUPABASE_GRAFICO_UNIQUE_IP_MENSAL_VIEW") ?: dotenv["SUPABASE_GRAFICO_UNIQUE_IP_MENSAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_GRAFICO_UNIQUE_IP_MENSAL_VIEW environment variable not set")
-    val viewGraficoUniqueIpAnual = System.getenv("SUPABASE_GRAFICO_UNIQUE_IP_ANUAL_VIEW") ?: dotenv["SUPABASE_GRAFICO_UNIQUE_IP_ANUAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_GRAFICO_UNIQUE_IP_ANUAL_VIEW environment variable not set")
+    private val tableProjetos = System.getenv("SUPABASE_TABLE_PROJETOS") ?: dotenv["SUPABASE_TABLE_PROJETOS"] ?: throw IllegalArgumentException("SUPABASE_TABLE_PROJETOS environment variable not set")
+    private val tableHistoricos = System.getenv("SUPABASE_TABLE_HISTORICOS") ?: dotenv["SUPABASE_TABLE_HISTORICOS"] ?: throw IllegalArgumentException("SUPABASE_TABLE_HISTORICOS environment variable not set")
+    private val tableFeatures = System.getenv("SUPABASE_TABLE_FEATURES") ?: dotenv["SUPABASE_TABLE_FEATURES"] ?: throw IllegalArgumentException("SUPABASE_TABLE_FEATURES environment variable not set")
+    private val storageImagens = System.getenv("SUPABASE_STORAGE_IMAGENS") ?: dotenv["SUPABASE_STORAGE_IMAGENS"] ?: throw IllegalArgumentException("SUPABASE_STORAGE_IMAGENS environment variable not set")
+    private val tableVisitLog = System.getenv("SUPABASE_TABLE_VISIT_LOGS") ?: dotenv["SUPABASE_TABLE_VISIT_LOGS"] ?: throw IllegalArgumentException("SUPABASE_TABLE_VISIT_LOGS environment variable not set")
+    private val viewCountUniqueIp = System.getenv("SUPABASE_COUNT_UNIQUE_IP_VIEW") ?: dotenv["SUPABASE_COUNT_UNIQUE_IP_VIEW"] ?: throw IllegalArgumentException("SUPABASE_COUNT_UNIQUE_IP_VIEW environment variable not set")
+    private val viewTotalCount = System.getenv("SUPABASE_COUNT_TOTAL_VIEW") ?: dotenv["SUPABASE_COUNT_TOTAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_COUNT_TOTAL_VIEW environment variable not set")
+    private val viewGraficoTotalSemanal = System.getenv("SUPABASE_GRAFICO_TOTAL_SEMANAL_VIEW") ?: dotenv["SUPABASE_GRAFICO_TOTAL_SEMANAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_GRAFICO_TOTAL_SEMANAL_VIEW environment variable not set")
+    private val viewGraficoTotalMensal = System.getenv("SUPABASE_GRAFICO_TOTAL_MENSAL_VIEW") ?: dotenv["SUPABASE_GRAFICO_TOTAL_MENSAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_GRAFICO_TOTAL_MENSAL_VIEW environment variable not set")
+    private val viewGraficoTotalAnual = System.getenv("SUPABASE_GRAFICO_TOTAL_ANUAL_VIEW") ?: dotenv["SUPABASE_GRAFICO_TOTAL_ANUAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_GRAFICO_TOTAL_ANUAL_VIEW environment variable not set")
+    private val viewGraficoUniqueIpSemanal = System.getenv("SUPABASE_GRAFICO_UNIQUE_IP_SEMANAL_VIEW") ?: dotenv["SUPABASE_GRAFICO_UNIQUE_IP_SEMANAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_GRAFICO_UNIQUE_IP_SEMANAL_VIEW environment variable not set")
+    private val viewGraficoUniqueIpMensal = System.getenv("SUPABASE_GRAFICO_UNIQUE_IP_MENSAL_VIEW") ?: dotenv["SUPABASE_GRAFICO_UNIQUE_IP_MENSAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_GRAFICO_UNIQUE_IP_MENSAL_VIEW environment variable not set")
+    private val viewGraficoUniqueIpAnual = System.getenv("SUPABASE_GRAFICO_UNIQUE_IP_ANUAL_VIEW") ?: dotenv["SUPABASE_GRAFICO_UNIQUE_IP_ANUAL_VIEW"] ?: throw IllegalArgumentException("SUPABASE_GRAFICO_UNIQUE_IP_ANUAL_VIEW environment variable not set")
 
     val supabaseProjetos = supabase.postgrest[tableProjetos]
     val supabaseHistoricos = supabase.postgrest[tableHistoricos]
