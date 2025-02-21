@@ -142,7 +142,7 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     justify-content: flex-end;
     padding: 1.5rem;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.92) 100%);
     color: white;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -162,8 +162,9 @@ h1, h2, h3, h4, h5, h6 {
 .portfolio-overlay p {
     font-size: 0.9rem;
     margin: 0;
-    opacity: 0.9;
+    opacity: 1;
     line-height: 1.4;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
 /* Efeito de hover suave */
