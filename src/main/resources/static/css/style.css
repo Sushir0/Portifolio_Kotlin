@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-flex;
     align-items: center;
     gap: 0.5em;
-    background-color: var(--primary);
+    background-color: #0071bd;
     color: white;
 }
 
