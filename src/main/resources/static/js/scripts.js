@@ -6,25 +6,40 @@ function toggleTheme() {
     } else {
         localStorage.setItem('theme', 'light');
     }
-    console.log(localStorage.getItem('theme'));
     applySavedTheme()
+}
+
+function applyTheme(theme) {
+    const btn = document.getElementById('button-toggle-theme');
+    const icon = document.getElementById('icon-toggle-theme')
+    
+    if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        icon.classList.replace('fa-moon', 'fa-sun');
+        btn.classList.replace('btn-primary', 'btn-light');
+    } else if (theme === 'light') {
+        document.body.classList.remove('dark-mode');
+        icon.classList.replace('fa-sun', 'fa-moon');
+        btn.classList.replace('btn-light', 'btn-primary');
+    }
 }
 
 function applySavedTheme() {
     const savedTheme = localStorage.getItem('theme');
-    const btn = document.getElementById('button-toggle-theme');
-    const icon = document.getElementById('icon-toggle-theme')
-    
-    console.log(btn, icon);
 
-    if (savedTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        icon.classList.replace('fa-moon', 'fa-sun');
-        btn.classList.replace('btn-primary', 'btn-light');
+    if (savedTheme === 'dark' || savedTheme === 'light') {
+        applyTheme(savedTheme);
     } else {
-        document.body.classList.remove('dark-mode');
-        icon.classList.replace('fa-sun', 'fa-moon');
-        btn.classList.replace('btn-light', 'btn-primary');
+        // Verifica o tema do sistema operacional
+        const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (isDarkMode) {
+            applyTheme('dark'); 
+        } else if (isLightMode) {
+            applyTheme('light'); 
+        } else {
+            applyTheme('light');
+        }
     }
 }
 
@@ -70,7 +85,7 @@ document.querySelectorAll('.portfolio-link').forEach(link => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    applySavedTheme();
+    setTimeout(() => applySavedTheme(), 10);
 
 });
 
