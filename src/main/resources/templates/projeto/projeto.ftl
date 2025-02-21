@@ -122,6 +122,7 @@
                     </div>
                     
                     <!-- Controles do Carrossel -->
+                    <#if projeto.features?size gte 2>
                     <button class="carousel-control-prev" type="button" data-bs-target="#featuresCarousel" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Anterior</span>
@@ -130,6 +131,7 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Próximo</span>
                     </button>
+                    </#if>
                 </div>
             </div>
         </section>

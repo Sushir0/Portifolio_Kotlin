@@ -100,3 +100,35 @@ document.querySelectorAll('.history-control').forEach(control => {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.history-carousel');
+    const itemsContainer = carousel.querySelector('.history-items');
+    const prevBtn = carousel.querySelector('.prev');
+    const nextBtn = carousel.querySelector('.next');
+
+    function updateControls() {
+        // Verifica se há overflow
+        const hasOverflow = itemsContainer.scrollWidth > itemsContainer.clientWidth;
+        
+        // Atualiza botões baseado no scroll e overflow
+        prevBtn.classList.toggle('hidden', !hasOverflow || itemsContainer.scrollLeft <= 0);
+        nextBtn.classList.toggle('hidden', !hasOverflow || itemsContainer.scrollLeft + itemsContainer.clientWidth >= itemsContainer.scrollWidth);
+    }
+
+    // Controles de scroll
+    prevBtn.addEventListener('click', () => {
+        itemsContainer.scrollBy({ left: -itemsContainer.clientWidth, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+        itemsContainer.scrollBy({ left: itemsContainer.clientWidth, behavior: 'smooth' });
+    });
+
+    // Atualiza ao interagir ou redimensionar
+    itemsContainer.addEventListener('scroll', updateControls);
+    window.addEventListener('resize', updateControls);
+    
+    // Verificação inicial
+    updateControls();
+});

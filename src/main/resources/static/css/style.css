@@ -542,7 +542,7 @@ h1, h2, h3, h4, h5, h6 {
     background: var(--card-bg);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     min-width: 280px;
 }
 
@@ -628,4 +628,7 @@ h1, h2, h3, h4, h5, h6 {
 .modal-content img {
     max-height: 80vh;
     object-fit: contain;
+}
+.history-control.hidden {
+    display: none;
 }
