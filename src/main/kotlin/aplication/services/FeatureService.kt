@@ -17,7 +17,8 @@ class FeatureService(
         idProjeto: Int,
         imageOriginalName: String,
         imageBytes: ByteArray? = null,
-        projetoService: ProjetoService
+        projetoService: ProjetoService,
+        importance: Int?
     ): Result<String> {
         // validação
         val erros = featureValidator.validarCreate(
@@ -25,7 +26,8 @@ class FeatureService(
             text = text,
             idProjeto = idProjeto,
             imageOriginalName = imageOriginalName,
-            imageBytes = imageBytes
+            imageBytes = imageBytes,
+            importance = importance
         )
         if (erros.isNotEmpty()) return Result.failure(IllegalArgumentException(erros.joinToString(",")))
 
@@ -42,6 +44,7 @@ class FeatureService(
             text = text,
             idProjeto = idProjeto,
             imagePath = imagePath,
+            importance = importance ?: 0
         )
 
         projetoService.changeUpdatedAt(idProjeto)
@@ -54,7 +57,14 @@ class FeatureService(
     }
 
     suspend fun getAllFeaturesFromProjeto(idProjeto: Int): Result<List<Feature>> {
-        return FeatureRepository.getAllFromProjeto(idProjeto)
+        try {
+            val featuresResult = FeatureRepository.getAllFromProjeto(idProjeto)
+            if (featuresResult.isFailure) throw featuresResult.exceptionOrNull()!!
+            val features = featuresResult.getOrThrow()
+            return Result.success(features.sortedByDescending { it.importance })
+        }catch (e: Exception) {
+            return Result.failure(e)
+        }
     }
 
     suspend fun updateFeature(
@@ -62,7 +72,8 @@ class FeatureService(
         name: String,
         text: String,
         imageOriginalName: String? = null,
-        imageBytes: ByteArray? = null
+        imageBytes: ByteArray? = null,
+        importance: Int?
         ): Result<Feature> {
         // validação
         val erros = featureValidator.validarUpdate(
@@ -70,7 +81,8 @@ class FeatureService(
             name = name,
             text = text,
             imageOriginalName = imageOriginalName,
-            imageBytes = imageBytes
+            imageBytes = imageBytes,
+            importance = importance
         )
         if (erros.isNotEmpty()) return Result.failure(IllegalArgumentException(erros.joinToString(",")))
 
@@ -92,7 +104,8 @@ class FeatureService(
         val featureUpdate = feature.copy(
             name = name,
             text = text,
-            imagePath = imagePath
+            imagePath = imagePath,
+            importance = importance ?: 0
         )
         return FeatureRepository.update(id, featureUpdate)
     }

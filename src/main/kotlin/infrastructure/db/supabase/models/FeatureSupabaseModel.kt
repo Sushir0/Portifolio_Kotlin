@@ -10,5 +10,6 @@ data class FeatureSupabaseModel(
     @SerialName("text") val text: String?,
     @SerialName("image_path") val image_path: String?,
     @SerialName("created_at") val created_at: String? = null,
-    @SerialName( "id_projeto") val id_projeto: Int? = null
+    @SerialName( "id_projeto") val id_projeto: Int? = null,
+    @SerialName("importance") val importance: Int?
 )

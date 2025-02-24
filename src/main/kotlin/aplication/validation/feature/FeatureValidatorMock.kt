@@ -6,7 +6,8 @@ object FeatureValidatorMock: IFeatureValidator {
         text: String,
         idProjeto: Int,
         imageOriginalName: String,
-        imageBytes: ByteArray?
+        imageBytes: ByteArray?,
+        importance: Int?
     ): List<String> {
         return emptyList()
     }
@@ -16,7 +17,8 @@ object FeatureValidatorMock: IFeatureValidator {
         name: String,
         text: String,
         imageOriginalName: String?,
-        imageBytes: ByteArray?
+        imageBytes: ByteArray?,
+        importance: Int?
     ): List<String> {
         return emptyList()
     }

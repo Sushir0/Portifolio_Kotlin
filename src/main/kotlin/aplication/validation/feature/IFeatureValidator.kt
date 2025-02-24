@@ -6,7 +6,8 @@ interface IFeatureValidator {
         text: String,
         idProjeto: Int,
         imageOriginalName: String,
-        imageBytes: ByteArray?
+        imageBytes: ByteArray?,
+        importance: Int?
     ): List<String>
 
     fun validarUpdate(
@@ -14,7 +15,8 @@ interface IFeatureValidator {
         name: String,
         text: String,
         imageOriginalName: String?,
-        imageBytes: ByteArray?
+        imageBytes: ByteArray?,
+        importance: Int?
     ): List<String>
 
 }

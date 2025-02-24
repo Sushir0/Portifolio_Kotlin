@@ -8,5 +8,6 @@ data class Feature(
     val text: String,
     val imagePath: String,
     val createdAt: Date,
-    val idProjeto: Int
+    val idProjeto: Int,
+    val importance: Int
 )

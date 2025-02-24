@@ -24,6 +24,7 @@ fun Route.featureRoutes(
             var idProjeto = 0
             var imageOriginalName = ""
             var imageBytes: ByteArray? = null
+            var importance: Int? = null
 
             multipart.forEachPart { part ->
                 when (part) {
@@ -32,6 +33,7 @@ fun Route.featureRoutes(
                             "name" -> name = part.value
                             "text" -> text = part.value
                             "idProjeto" -> idProjeto = part.value.toIntOrNull() ?: 0
+                            "importance" -> importance = part.value.toIntOrNull()
                         }
                     }
                     is PartData.FileItem -> {
@@ -50,7 +52,8 @@ fun Route.featureRoutes(
                 idProjeto = idProjeto,
                 imageOriginalName = imageOriginalName,
                 imageBytes = imageBytes,
-                projetoService = appModule.projetoService
+                projetoService = appModule.projetoService,
+                importance = importance
             )
 
 
@@ -63,7 +66,8 @@ fun Route.featureRoutes(
                         "error" to validationException.message,
                         "name" to name,
                         "text" to text,
-                        "idProjeto" to idProjeto
+                        "idProjeto" to idProjeto,
+                        "importance" to importance
                     )))
                 }else{
                     call.respondText("Failed to create feature", status = HttpStatusCode.InternalServerError)
@@ -102,7 +106,8 @@ fun Route.featureRoutes(
                     "name" to featureResult.getOrThrow().name,
                     "text" to featureResult.getOrThrow().text,
                     "id" to featureResult.getOrThrow().id,
-                    "idProjeto" to featureResult.getOrThrow().idProjeto
+                    "idProjeto" to featureResult.getOrThrow().idProjeto,
+                    "importance" to featureResult.getOrThrow().importance
                 )))
             } else {
                 call.respondText("Failed to load feature", status = HttpStatusCode.InternalServerError)
@@ -116,6 +121,7 @@ fun Route.featureRoutes(
             var text = ""
             var imageOriginalName = ""
             var imageBytes: ByteArray? = null
+            var importance: Int? = null
 
             multipart.forEachPart { part ->
                 when (part) {
@@ -123,6 +129,7 @@ fun Route.featureRoutes(
                         when (part.name) {
                             "name" -> name = part.value
                             "text" -> text = part.value
+                            "importance" -> importance = part.value.toIntOrNull()
                         }
                     }
                     is PartData.FileItem -> {
@@ -140,7 +147,8 @@ fun Route.featureRoutes(
                 name = name,
                 text = text,
                 imageOriginalName = imageOriginalName,
-                imageBytes = imageBytes
+                imageBytes = imageBytes,
+                importance = importance
             )
             if (updateResult.isSuccess) {
                 call.respondRedirect("/projeto/${updateResult.getOrThrow().idProjeto}")
@@ -151,7 +159,8 @@ fun Route.featureRoutes(
                         "error" to validationException.message,
                         "name" to name,
                         "text" to text,
-                        "id" to id
+                        "id" to id,
+                        "importance" to importance
                     )))
                 }else{
                     call.respondText("Failed to update feature", status = HttpStatusCode.InternalServerError)

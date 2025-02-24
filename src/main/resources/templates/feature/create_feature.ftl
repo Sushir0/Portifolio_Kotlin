@@ -62,6 +62,11 @@
                 <input type="file" class="form-control" name="image" accept="image/*">
             </div>
 
+            <div class="mb-3">
+                <label class="form-label">Importancia</label>
+                <input type="number" class="form-control" name="importance" value="${(importance)!}">
+            </div>
+
             <input type="hidden" name="idProjeto" value="${idProjeto}">
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">

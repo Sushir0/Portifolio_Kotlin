@@ -15,7 +15,8 @@ class SupabaseFeatureRepository(): FeatureRepository {
                 name = featureInputDTO.name,
                 text = featureInputDTO.text,
                 image_path = featureInputDTO.imagePath,
-                id_projeto = featureInputDTO.idProjeto
+                id_projeto = featureInputDTO.idProjeto,
+                importance = featureInputDTO.importance
             )
 
             SupabaseService.supabaseFeatures.insert(featureSupabaseModel)
@@ -39,7 +40,8 @@ class SupabaseFeatureRepository(): FeatureRepository {
                     text = response.text ?: "",
                     imagePath = response.image_path ?: "",
                     createdAt = utils.toDate(response.created_at!!),
-                    idProjeto = response.id_projeto!!
+                    idProjeto = response.id_projeto!!,
+                    importance = response.importance ?: 0
                 )
             )
         }catch (e: Exception){
@@ -60,7 +62,8 @@ class SupabaseFeatureRepository(): FeatureRepository {
                     text = response.text ?: "",
                     imagePath = response.image_path ?: "",
                     createdAt = utils.toDate(response.created_at!!),
-                    idProjeto = response.id_projeto!!
+                    idProjeto = response.id_projeto!!,
+                    importance = response.importance ?: 0
                 )
             }
 
@@ -78,7 +81,8 @@ class SupabaseFeatureRepository(): FeatureRepository {
                 text = feature.text,
                 image_path = feature.imagePath,
                 id_projeto = feature.idProjeto,
-                created_at = utils.fromDate(feature.createdAt)
+                created_at = utils.fromDate(feature.createdAt),
+                importance = feature.importance
             )
             val responseList = SupabaseService.supabaseFeatures.upsert(featureSupabaseModel){
                 select()
@@ -93,7 +97,8 @@ class SupabaseFeatureRepository(): FeatureRepository {
                     text = response.text ?: "",
                     imagePath = response.image_path ?: "",
                     createdAt = utils.toDate(response.created_at!!),
-                    idProjeto = response.id_projeto!!
+                    idProjeto = response.id_projeto!!,
+                    importance = response.importance ?: 0
                 )
             )
         }catch (e: Exception){

@@ -7,5 +7,6 @@ data class FeatureInputDTO(
     val text: String,
     val imagePath: String,
     val createdAt: String? = null,
-    val idProjeto: Int
+    val idProjeto: Int,
+    val importance: Int
 )
