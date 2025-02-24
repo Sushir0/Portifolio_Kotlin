@@ -70,7 +70,7 @@ class ProjetoService(
             // porovar historicos
             val historicosResult = historicoService.getAllPresentationModelFromProjetoId(projeto.id)
             if(historicosResult.isFailure) throw historicosResult.exceptionOrNull()!!
-            val historicos = historicosResult.getOrThrow()
+            val historicos = historicosResult.getOrThrow().sortedByDescending { it.createdAt }
 
             projeto.copy(
                 features = features,
