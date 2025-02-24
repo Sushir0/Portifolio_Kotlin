@@ -23,12 +23,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/#portfolio"><h6>Portfólio</h6></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/#about"><h6>Sobre</h6></a></li>
-                    <li class="nav-item"><a class="nav-link" href="/#contact"><h6>Contato</h6></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#portfolio">Portfólio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#about">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#contact">Contato</a></li>
                     
                     <#if isAuthenticated>
-                        <li class="nav-item"><a class="nav-link" href="/admin"><h6>Admin</h6></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
                     </#if>
                 </ul>
             </div>
@@ -37,9 +37,9 @@
 
     <!-- Project Header -->
     <header class="project-header text-white">
-        <div class="container text-center">
+        <div class="container text-center mb-5">
             <div class="project-header-content">
-                <img src="${projeto.imagePath}" class="project-main-image cursor-pointer" alt="${projeto.name}" data-bs-toggle="modal" data-bs-target="#imagem_projeto">
+                <img src="${projeto.imagePath}" class="project-main-image cursor-pointer" alt="${projeto.name}" tabindex="0" role="button" aria-label="Ampliar imagem do projeto ${projeto.name}" data-bs-toggle="modal" data-bs-target="#imagem_projeto">
                 <h1 class="mt-4 mb-3">${projeto.name}</h1>
                 <div class="project-metadata">
                     <div class="metadata-item">
@@ -51,10 +51,10 @@
                         <span>Última atualização: ${projeto.updatedAt?string['dd/MM/yyyy']}</span>
                     </div>
                 </div>
-                <a href="${projeto.gitHubUrl}" target="_blank" class="btn btn-primary btn-github">
+                <a href="${projeto.gitHubUrl}" target="_blank" class="btn btn-primary btn-github" aria-label="Ver projeto no GitHub">
                     <i class="fab fa-github"></i> Ver no GitHub
                 </a>
-                <div class="project-tags mt-3">
+                <div class="project-tags mt-3 mb-4" aria-label="Tecnologias utilizadas no projeto" tabindex="0">
                     <#list projeto.tags as tag>
                         <span class="badge-tech badge-tech-${tag?lower_case}">${tag}</span>
                     </#list>
@@ -65,7 +65,7 @@
 
     <!-- Project Content -->
     <main class="project-container">
-        <section class="project-description">
+        <section class="project-description" tabindex="0">
             <div class="container">
                 <h2 class="section-title">Descrição do Projeto</h2>
                 <div class="content-box">

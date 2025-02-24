@@ -38,6 +38,17 @@ body:not(.dark-mode) .btn-outline-light:hover {
     color: white;
 }
 
+.dark-mode .btn-outline-light:focus {
+    background-color: var(--primary);
+    color: white;
+}
+
+body:not(.dark-mode) .btn-outline-light:focus {
+    background-color: var(--primary) !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(61, 220, 132, 0.3);
+}
+
 
 .dark-mode {
     --bg-color: #2c3e50;
@@ -115,7 +126,6 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #0071bd;
     color: white;
 }
-
 .portfolio-item {
     position: relative;
     border-radius: 15px;
@@ -131,6 +141,23 @@ h1, h2, h3, h4, h5, h6 {
     object-fit: cover;
     object-position: center;
     transition: transform 0.3s;
+}
+
+.portfolio-item:hover .portfolio-overlay,
+.portfolio-item:focus .portfolio-overlay { /* Adicionado :focus */
+    opacity: 1;
+}
+
+/* Efeito de hover e focus suave */
+.portfolio-item:hover img,
+.portfolio-item:focus img { /* Adicionado :focus */
+    transform: scale(1.05);
+}
+
+/* Adicionar um contorno visível para foco */
+.portfolio-item:focus {
+    outline: none; /* Remove o contorno padrão do navegador */
+    box-shadow: 0 0 0 3px rgba(61, 220, 132, 0.5); /* Adiciona um contorno personalizado */
 }
 
 .portfolio-overlay {
@@ -149,9 +176,6 @@ h1, h2, h3, h4, h5, h6 {
     transition: opacity 0.3s ease;
 }
 
-.portfolio-item:hover .portfolio-overlay {
-    opacity: 1;
-}
 
 .portfolio-overlay h3 {
     font-size: 1.5rem;
@@ -168,10 +192,6 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
-/* Efeito de hover suave */
-.portfolio-item:hover img {
-    transform: scale(1.05);
-}
 
 .contact-card {
     background: var(--gradient);
@@ -219,15 +239,6 @@ h1, h2, h3, h4, h5, h6 {
 .badge-tech-sqlite { background: #003b57; color: #fff; }
 
 
-.dark-mode .btn-outline-light {
-    color: var(--text-color);
-    border-color: var(--text-color);
-}
-
-.dark-mode .btn-outline-light:hover {
-    background-color: var(--primary);
-    color: white;
-}
 
 /* Tornar overlay sempre visível em mobile */
 @media (hover: none) and (pointer: coarse) {
@@ -631,4 +642,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 .history-control.hidden {
     display: none;
+}
+
+.nav-link {
+    color: var(--text-color);
+}
+.nav-link:focus, .nav-link:hover {
+    font-weight: 800;
+    color: var(--text-color) !important;
 }

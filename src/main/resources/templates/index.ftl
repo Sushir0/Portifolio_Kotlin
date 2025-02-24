@@ -17,17 +17,17 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand fw-bold " href="/"><h3>Ciro Roberto</h3></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Abrir menu de navegação">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#portfolio"><h6>Portfólio</h6></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about"><h6>Sobre</h6></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact"><h6>Contato</h6></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfólio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
                     
                     <#if isAuthenticated>
-                        <li class="nav-item"><a class="nav-link" href="/admin"><h6>Admin</h6></a></li>
+                        <li class="nav-item"><a class="nav-link" href="/admin">Admin</a></li>
                     </#if>
                 </ul>
             </div>
@@ -41,7 +41,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6 text-center">
                         <h1 class="mb-3">Ciro Roberto</h1>
-                        <img src="static/images/imagem-perfil.jpg" class="masthead-avatar mb-4 cursor-pointer" alt="Ciro Roberto" data-bs-toggle="modal" data-bs-target="#imagemModal">
+                        <img src="static/images/imagem-perfil.jpg" class="masthead-avatar mb-4 cursor-pointer" alt="Ciro Roberto" data-bs-toggle="modal" data-bs-target="#imagemModal" tabindex="0" role="button" aria-label="Ampliar imagem do perfil">
                     </div>
                     <div class="col-lg-6">
                         <p class="lead">Formado em <span class="emphasis">Informática pelo IFSul</span>. 
@@ -55,7 +55,7 @@
                     
                 </div>
             </div>
-            <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-4" tabindex="0" aria-label="Tecnologias utilizadas">
                 <#list tags as tag>
                     <span class="badge-tech badge-tech-${tag?lower_case}">${tag}</span>
                 </#list>
@@ -70,27 +70,25 @@
         <div class="row g-4">
             <#list projetos as projeto>
             <div class="col-md-6 col-lg-4">
-                <a href="/projeto/${projeto.id}" class="portfolio-link">
-                    <div class="portfolio-item">
-                        <img src="${projeto.imagePath}" class="img-fluid" alt="Imagem de ${projeto.name}">
-                        <div class="portfolio-overlay">
-                            <h3>${projeto.name}</h3>
-                            <p>${projeto.description}</p>
-                            <div class="technologies">
-                                <#-- Lista até 3 tags -->
-                                <#list (projeto.tags![]) as tag>
-                                    <#if tag?index < 3>
-                                        <span class="badge bg-secondary">${tag}</span>
-                                    <#else>
-                                        <#break> <#-- Para o loop após a 3ª tag -->
-                                    </#if>
-                                </#list>
-                                
-                                <#-- Mostra "..." se houver mais de 3 tags -->
-                                <#if (projeto.tags![])?size gt 3>
-                                    <span class="badge bg-dark">...</span>
+                <a href="/projeto/${projeto.id}" class="portfolio-link portfolio-item">
+                    <img src="${projeto.imagePath}" class="img-fluid" alt="Imagem de ${projeto.name}">
+                    <div class="portfolio-overlay">
+                        <h3>${projeto.name}</h3>
+                        <p>${projeto.description}</p>
+                        <div class="technologies">
+                            <#-- Lista até 3 tags -->
+                            <#list (projeto.tags![]) as tag>
+                                <#if tag?index < 3>
+                                    <span class="badge bg-secondary">${tag}</span>
+                                <#else>
+                                    <#break> <#-- Para o loop após a 3ª tag -->
                                 </#if>
-                            </div>
+                            </#list>
+                            
+                            <#-- Mostra "..." se houver mais de 3 tags -->
+                            <#if (projeto.tags![])?size gt 3>
+                                <span class="badge bg-dark">...</span>
+                            </#if>
                         </div>
                     </div>
                 </a>
@@ -101,9 +99,9 @@
 </section>
 
     <!-- About Section -->
-    <section id="about" class="page-section about-section">
+    <section id="about" class="page-section about-section" tabindex="0">
         <div class="container">
-            <h2 class="text-center mb-5">Sobre Mim</h2>
+            <h2 class="text-center mb-5" >Sobre Mim</h2>
             <div class="row">
     <div class="col-lg-6">
         <p class="lead">
@@ -134,10 +132,10 @@
     <section class="page-section">
         <div class="container">
             <h2 class="text-center mb-5">Estatísticas do Site</h2>
-            <div class="row justify-content-center g-4">
+            <div class="row justify-content-center g-4"  tabindex="0" aria-label="Estatísticas do site">
                 <!-- Unique Visitors Card -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="stat-card text-center p-4 h-100">
+                    <div class="stat-card text-center p-4 h-100" tabindex="0">
                         <div class="stat-icon mb-3">
                             <i class="fas fa-users fa-3x"></i>
                         </div>
@@ -148,7 +146,7 @@
 
                 <!-- Total Visits Card -->
                 <div class="col-md-6 col-lg-4">
-                    <div class="stat-card text-center p-4 h-100">
+                    <div class="stat-card text-center p-4 h-100" tabindex="0">
                         <div class="stat-icon mb-3">
                             <i class="fas fa-eye fa-3x"></i>
                         </div>
@@ -163,16 +161,16 @@
     <!-- Contact Section -->
     <section id="contact" class="page-section">
         <div class="container">
-            <div class="contact-card">
+            <div class="contact-card" tabindex="0" aria-label="Contato de Ciro Roberto">
                 <h2 class="text-center mb-4">Vamos Conectar!</h2>
                 <div class="d-flex flex-wrap justify-content-center gap-3">
-                    <a href="https://linkedin.com/in/ciro-roberto" class="btn btn-outline-light btn-lg">
+                    <a href="https://linkedin.com/in/ciro-roberto" class="btn btn-outline-light btn-lg" aria-label="LinkedIn de Ciro Roberto">
                         <i class="fab fa-linkedin"></i> LinkedIn
                     </a>
-                    <a href="https://github.com/Sushir0" class="btn btn-outline-light btn-lg">
+                    <a href="https://github.com/Sushir0" class="btn btn-outline-light btn-lg" aria-label="GitHub de Ciro Roberto">
                         <i class="fab fa-github"></i> GitHub
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=5551981678088&text=ol%C3%A1%2C%20estou%20interessado" class="btn btn-outline-light btn-lg">
+                    <a href="https://api.whatsapp.com/send?phone=5551981678088&text=ol%C3%A1%2C%20estou%20interessado" class="btn btn-outline-light btn-lg" aria-label="Enviar mensagem no WhatsApp para Ciro Roberto">
                         <i class="fab fa-whatsapp"></i> Whatsapp
                     </a>
                 </div>
@@ -199,7 +197,7 @@
 
 
     <!-- Theme Toggle -->
-    <button id="button-toggle-theme" class="btn btn-primary theme-toggle" onclick="toggleTheme()">
+    <button id="button-toggle-theme" class="btn btn-primary theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema claro e escuro">
         <i id="icon-toggle-theme" class="fas fa-moon"></i>
     </button>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
