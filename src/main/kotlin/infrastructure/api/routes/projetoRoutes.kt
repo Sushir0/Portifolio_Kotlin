@@ -30,6 +30,7 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
             var imagePath = ""
             var imageOriginalName = ""
             var imageBytes: ByteArray? = null
+            var importance: Int? = null
 
 
             multipart.forEachPart { part ->
@@ -41,6 +42,7 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                             "text" -> text = part.value
                             "githubUrl" -> githubUrl = part.value
                             "tags" -> tags = part.value.split(",")
+                            "importance" -> importance = part.value.toIntOrNull()
                         }
                     }
 
@@ -60,7 +62,8 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                 gitHubUrl = githubUrl,
                 imageOriginalName = imageOriginalName,
                 imageBytes = imageBytes,
-                tags = tags
+                tags = tags,
+                importance = importance
             )
             if (idProjetoResult.isSuccess) {
                 call.respondRedirect("/projeto/${idProjetoResult.getOrThrow()}")
@@ -73,7 +76,8 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                             "description" to description,
                             "text" to text,
                             "githubUrl" to githubUrl,
-                            "tags" to tags.joinToString(",")
+                            "tags" to tags.joinToString(","),
+                            "importance" to importance
                         )))
                 }else{
                     call.respondText("Failed to create project", status = HttpStatusCode.InternalServerError)
@@ -95,7 +99,8 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                     "description" to projetoResult.getOrThrow().description,
                     "text" to projetoResult.getOrThrow().text,
                     "githubUrl" to projetoResult.getOrThrow().gitHubUrl,
-                    "tags" to projetoResult.getOrThrow().tags.joinToString(",")
+                    "tags" to projetoResult.getOrThrow().tags.joinToString(","),
+                    "importance" to projetoResult.getOrThrow().importance,
                     )))
             } else {
                 call.respondText("Failed to load project", status = HttpStatusCode.InternalServerError)
@@ -113,6 +118,7 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
             var tags = listOf<String>()
             var imageOriginalName = ""
             var imageBytes: ByteArray? = null
+            var importance: Int? = null
 
             multipart.forEachPart { part ->
                 when (part) {
@@ -123,6 +129,8 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                             "text" -> text = part.value
                             "githubUrl" -> githubUrl = part.value
                             "tags" -> tags = part.value.split(",")
+                            "importance" -> importance = part.value.toIntOrNull()
+
                         }
                     }
                     is PartData.FileItem -> {
@@ -144,7 +152,8 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                 gitHubUrl = githubUrl,
                 imageOriginalName = imageOriginalName,
                 imageBytes = imageBytes,
-                tags = tags
+                tags = tags,
+                importance = importance
             )
             if (updateResult.isSuccess) {
                 call.respondRedirect("/projeto/$id")
@@ -157,7 +166,8 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                         "description" to description,
                         "text" to text,
                         "githubUrl" to githubUrl,
-                        "tags" to tags.joinToString(",")
+                        "tags" to tags.joinToString(","),
+                        "importance" to importance
                     )))
                 }else{
                     call.respondText("Failed to update project", status = HttpStatusCode.InternalServerError)

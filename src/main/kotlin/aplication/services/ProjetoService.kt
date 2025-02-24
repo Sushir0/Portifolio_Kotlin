@@ -21,7 +21,8 @@ class ProjetoService(
         gitHubUrl: String,
         tags: List<String>,
         imageOriginalName: String,
-        imageBytes: ByteArray? = null
+        imageBytes: ByteArray? = null,
+        importance: Int?
     ): Result<String> {
         // validação
        val erros = projetoValidator.validarCreate(
@@ -31,7 +32,8 @@ class ProjetoService(
            gitHubUrl = gitHubUrl,
            imageOriginalName = imageOriginalName,
            tags = tags,
-           imageBytes = imageBytes
+           imageBytes = imageBytes,
+           importance = importance
        )
         if (erros.isNotEmpty()) return Result.failure(ValidationException(erros))
 
@@ -49,7 +51,8 @@ class ProjetoService(
             text = text,
             githubUrl = gitHubUrl,
             tags = tags,
-            imagePath = imagePath
+            imagePath = imagePath,
+            importance = importance ?: 0
         )
         projetoRepository.create(projetoInputDTO)
         return Result.success("projeto criado com sucesso")
@@ -80,7 +83,14 @@ class ProjetoService(
     }
 
     suspend fun getAllProjetos(): Result<List<Projeto>> {
-        return projetoRepository.getAll()
+        try {
+            val projetosResult = projetoRepository.getAll()
+            if (projetosResult.isFailure) throw projetosResult.exceptionOrNull()!!
+            val projetos = projetosResult.getOrThrow()
+            return Result.success(projetos.sortedByDescending{ it.importance })
+        } catch (e: Exception) {
+            return Result.failure(e)
+        }
     }
 
     suspend fun updateProjeto(
@@ -91,7 +101,8 @@ class ProjetoService(
         gitHubUrl: String,
         tags: List<String>,
         imageOriginalName: String? = null,
-        imageBytes: ByteArray? = null
+        imageBytes: ByteArray? = null,
+        importance: Int?
     ): Result<Projeto> {
         // validação
         val erros = projetoValidator.validarUpdate(
@@ -102,7 +113,8 @@ class ProjetoService(
             gitHubUrl = gitHubUrl,
             imageOriginalName = imageOriginalName,
             tags = tags,
-            imageBytes = imageBytes
+            imageBytes = imageBytes,
+            importance = importance
         )
         if (erros.isNotEmpty()) return Result.failure(ValidationException(erros))
 
@@ -125,7 +137,8 @@ class ProjetoService(
                 gitHubUrl = gitHubUrl,
                 tags = tags,
                 updatedAt = Date(),
-                imagePath = imagePath
+                imagePath = imagePath,
+                importance = importance ?: 0
             )
             return projetoRepository.update(id, projeto)
         }else{
@@ -139,7 +152,8 @@ class ProjetoService(
                 text = text,
                 gitHubUrl = gitHubUrl,
                 tags = tags,
-                updatedAt = Date()
+                updatedAt = Date(),
+                importance = importance ?: 0
             )
             return projetoRepository.update(id = id, projeto = projeto)
         }

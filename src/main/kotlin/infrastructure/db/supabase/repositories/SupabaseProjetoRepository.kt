@@ -19,7 +19,8 @@ class SupabaseProjetoRepository(): ProjetoRepository {
                 text = projetoInputDTO.text,
                 github_url = projetoInputDTO.githubUrl,
                 image_path = projetoInputDTO.imagePath,
-                tags = projetoInputDTO.tags
+                tags = projetoInputDTO.tags,
+                importance = projetoInputDTO.importance
             )
 
 
@@ -48,6 +49,7 @@ class SupabaseProjetoRepository(): ProjetoRepository {
                     gitHubUrl = response.github_url ?: "",
                     imagePath = response.image_path ?: "",
                     tags = response.tags ?: emptyList(),
+                    importance = response.importance ?: 0,
                     createdAt = utils.toDate(response.created_at!!),
                     updatedAt = utils.toDate(response.updated_at!!)
                 )
@@ -71,7 +73,8 @@ class SupabaseProjetoRepository(): ProjetoRepository {
                     imagePath = response.image_path ?: "",
                     tags = response.tags ?: emptyList(),
                     createdAt = utils.toDate(response.created_at!!),
-                    updatedAt = utils.toDate(response.updated_at!!)
+                    updatedAt = utils.toDate(response.updated_at!!),
+                    importance = response.importance ?: 0
                 )
             }
 
@@ -92,7 +95,8 @@ class SupabaseProjetoRepository(): ProjetoRepository {
                 image_path = projeto.imagePath,
                 tags = projeto.tags,
                 created_at = utils.fromDate(projeto.createdAt),
-                updated_at = utils.fromDate(Date())
+                updated_at = utils.fromDate(Date()),
+                importance = projeto.importance
             )
             val responseList = SupabaseService.supabaseProjetos.upsert(projetoSupabaseModel){
                 select()
@@ -110,7 +114,9 @@ class SupabaseProjetoRepository(): ProjetoRepository {
                     imagePath = response.image_path ?: "",
                     tags = response.tags ?: emptyList(),
                     createdAt = utils.toDate(response.created_at!!),
-                    updatedAt = utils.toDate(response.updated_at!!)
+                    updatedAt = utils.toDate(response.updated_at!!),
+                    importance = response.importance ?: 0
+
                 )
             )
         }catch (e:Exception){

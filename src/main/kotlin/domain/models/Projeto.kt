@@ -14,4 +14,5 @@ data class Projeto (
     var features: List<Feature> = emptyList(),
     val createdAt: Date,
     val updatedAt: Date,
+    val importance: Int
     )

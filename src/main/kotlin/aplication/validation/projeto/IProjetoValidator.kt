@@ -8,7 +8,8 @@ interface IProjetoValidator {
         gitHubUrl: String,
         imageOriginalName: String,
         tags: List<String>,
-        imageBytes: ByteArray?
+        imageBytes: ByteArray?,
+        importance: Int?
     ): List<String>
 
     fun validarUpdate(
@@ -19,6 +20,7 @@ interface IProjetoValidator {
         gitHubUrl: String,
         imageOriginalName: String?,
         tags: List<String>,
-        imageBytes: ByteArray?
+        imageBytes: ByteArray?,
+        importance: Int?
     ): List<String>
 }

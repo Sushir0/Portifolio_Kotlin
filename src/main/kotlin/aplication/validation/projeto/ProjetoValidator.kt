@@ -9,7 +9,8 @@ object ProjetoValidator: IProjetoValidator {
         gitHubUrl: String,
         imageOriginalName: String,
         tags: List<String>,
-        imageBytes: ByteArray?
+        imageBytes: ByteArray?,
+        importance: Int?
     ): List<String> {
         val errors = mutableListOf<String>()
         errors.addAll(validarName(name))
@@ -19,6 +20,7 @@ object ProjetoValidator: IProjetoValidator {
         errors.addAll(validarImageOriginalName(imageOriginalName))
         errors.addAll(validarTags(tags))
         errors.addAll(validarImageBytes(imageBytes))
+        errors.addAll(validarImportance(importance))
         return errors
     }
 
@@ -30,7 +32,8 @@ object ProjetoValidator: IProjetoValidator {
         gitHubUrl: String,
         imageOriginalName: String?,
         tags: List<String>,
-        imageBytes: ByteArray?
+        imageBytes: ByteArray?,
+        importance: Int?
     ): List<String> {
         val errors = mutableListOf<String>()
         errors.addAll(validarName(name))
@@ -38,12 +41,18 @@ object ProjetoValidator: IProjetoValidator {
         errors.addAll(validarText(text))
         errors.addAll(validarGitHubUrl(gitHubUrl))
         errors.addAll(validarTags(tags))
+        errors.addAll(validarImportance(importance))
 
         if (imageOriginalName != null){
             errors.addAll(validarImageOriginalName(imageOriginalName))
             errors.addAll(validarImageBytes(imageBytes))
         }
         return errors
+    }
+
+    private fun validarImportance(importance: Int?): List<String> {
+        //todo
+        return emptyList()
     }
 
     fun validarName(name: String): List<String> {

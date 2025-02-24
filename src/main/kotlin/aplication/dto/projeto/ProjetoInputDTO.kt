@@ -14,5 +14,6 @@ data class ProjetoInputDTO(
     val tags: List<String>,
     val imagePath: String,
     val createdAt: String? = null,
-    val updatedAt: String? = null
+    val updatedAt: String? = null,
+    val importance: Int
 )

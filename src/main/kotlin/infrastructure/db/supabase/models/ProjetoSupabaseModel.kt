@@ -13,5 +13,6 @@ data class ProjetoSupabaseModel(
     @SerialName("image_path") val image_path: String?,
     @SerialName("tags") val tags: List<String>?,
     @SerialName("created_at") val created_at: String? = null,
-    @SerialName("updated_at") val updated_at: String? = null
+    @SerialName("updated_at") val updated_at: String? = null,
+    @SerialName("importance") val importance: Int?
 )

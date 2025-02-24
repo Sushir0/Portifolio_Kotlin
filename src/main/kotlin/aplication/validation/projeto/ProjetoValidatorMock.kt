@@ -8,7 +8,8 @@ object ProjetoValidatorMock: IProjetoValidator {
         gitHubUrl: String,
         imageOriginalName: String,
         tags: List<String>,
-        imageBytes: ByteArray?
+        imageBytes: ByteArray?,
+        importance: Int?
     ): List<String> {
         return emptyList()
     }
@@ -21,7 +22,8 @@ object ProjetoValidatorMock: IProjetoValidator {
         gitHubUrl: String,
         imageOriginalName: String?,
         tags: List<String>,
-        imageBytes: ByteArray?
+        imageBytes: ByteArray?,
+        importance: Int?
     ): List<String> {
         return emptyList()
     }
