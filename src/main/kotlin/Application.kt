@@ -42,12 +42,35 @@ fun Application.configureTracking(){
         val ipAddress = call.request.origin.remoteHost
         val page = call.request.uri
 
-        val ignore_paths = listOf(
-            "/static",
-            "/favicon.ico"
+        val allowedPaths = listOf(
+            "/",
+            "/projeto",
         )
 
-        if(ignore_paths.any{ page.startsWith(it) }) {
+        val blockedPaths = listOf(
+            "/.env", "/.git", "/modules", "/backup", "/sitemap.xml",
+            "/robots.txt", "/wp-includes", "/wlwmanifest.xml"
+        )
+
+        val blockedIps = mutableSetOf<String>()
+
+        if (blockedIps.contains(ipAddress)) {
+            return@intercept
+        }
+
+        if (blockedPaths.any { page.startsWith(it) }) {
+            blockedIps.add(ipAddress)
+            return@intercept
+        }
+
+        if (allowedPaths.none { route ->
+                if (route == "/") {
+                    page == "/"
+                }
+                else {
+                    page.startsWith(route)
+                }
+            }) {
             return@intercept
         }
 
