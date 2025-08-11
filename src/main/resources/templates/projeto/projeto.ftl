@@ -51,9 +51,11 @@
                         <span>Última atualização: ${projeto.updatedAt?string['dd/MM/yyyy']}</span>
                     </div>
                 </div>
-                <a href="${projeto.gitHubUrl}" target="_blank" class="btn btn-primary btn-github" aria-label="Ver projeto no GitHub">
-                    <i class="fab fa-github"></i> Ver no GitHub
-                </a>
+                <#if projeto.gitHubUrl?has_content>
+                    <a href="${projeto.gitHubUrl}" target="_blank" class="btn btn-primary btn-github" aria-label="Ver projeto no GitHub">
+                        <i class="fab fa-github"></i> Ver no GitHub
+                    </a>
+                </#if>
                 <div class="project-tags mt-3 mb-4" aria-label="Tecnologias utilizadas no projeto" tabindex="0">
                     <#list projeto.tags as tag>
                         <span class="badge-tech badge-tech-${tag?lower_case}">${tag}</span>

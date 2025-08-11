@@ -159,6 +159,7 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                 call.respondRedirect("/projeto/$id")
             } else {
                 if(updateResult.exceptionOrNull() is ValidationException){
+                    println("Erro de validação")
                     val validationException = updateResult.exceptionOrNull() as ValidationException
                     call.respond(FreeMarkerContent("projeto/editar_projeto.ftl", mapOf(
                         "error" to validationException.message,

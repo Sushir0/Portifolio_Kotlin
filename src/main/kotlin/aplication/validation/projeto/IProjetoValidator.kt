@@ -17,7 +17,7 @@ interface IProjetoValidator {
         name: String,
         description: String,
         text: String,
-        gitHubUrl: String,
+        gitHubUrl: String?,
         imageOriginalName: String?,
         tags: List<String>,
         imageBytes: ByteArray?,

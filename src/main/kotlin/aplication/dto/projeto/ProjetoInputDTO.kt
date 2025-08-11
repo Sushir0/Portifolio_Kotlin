@@ -10,7 +10,7 @@ data class ProjetoInputDTO(
     val name: String,
     val description: String,
     val text: String,
-    val githubUrl: String,
+    val githubUrl: String?,
     val tags: List<String>,
     val imagePath: String,
     val createdAt: String? = null,

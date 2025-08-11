@@ -29,7 +29,7 @@ object ProjetoValidator: IProjetoValidator {
         name: String,
         description: String,
         text: String,
-        gitHubUrl: String,
+        gitHubUrl: String?,
         imageOriginalName: String?,
         tags: List<String>,
         imageBytes: ByteArray?,
@@ -70,7 +70,7 @@ object ProjetoValidator: IProjetoValidator {
         return emptyList()
     }
 
-    fun validarGitHubUrl(gitHubUrl: String): List<String> {
+    fun validarGitHubUrl(gitHubUrl: String?): List<String> {
         //todo
         return emptyList()
     }
