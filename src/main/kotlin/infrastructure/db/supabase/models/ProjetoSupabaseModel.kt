@@ -10,6 +10,7 @@ data class ProjetoSupabaseModel(
     @SerialName("description") val description: String?,
     @SerialName("text") val text: String?,
     @SerialName("github_url") val github_url: String?,
+    @SerialName("download_url") val download_url: String? = null,
     @SerialName("image_path") val image_path: String?,
     @SerialName("tags") val tags: List<String>?,
     @SerialName("created_at") val created_at: String? = null,

@@ -26,6 +26,7 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
             var description = ""
             var text = ""
             var githubUrl = ""
+            var downloadUrl = ""
             var tags = listOf<String>()
             var imagePath = ""
             var imageOriginalName = ""
@@ -41,6 +42,7 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                             "description" -> description = part.value
                             "text" -> text = part.value
                             "githubUrl" -> githubUrl = part.value
+                            "downloadUrl" -> downloadUrl = part.value
                             "tags" -> tags = part.value.split(",")
                             "importance" -> importance = part.value.toIntOrNull()
                         }
@@ -60,6 +62,7 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                 description = description,
                 text = text,
                 gitHubUrl = githubUrl,
+                downloadUrl = downloadUrl,
                 imageOriginalName = imageOriginalName,
                 imageBytes = imageBytes,
                 tags = tags,
@@ -76,6 +79,7 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                             "description" to description,
                             "text" to text,
                             "githubUrl" to githubUrl,
+                            "downloadUrl" to downloadUrl,
                             "tags" to tags.joinToString(","),
                             "importance" to importance
                         )))
@@ -99,6 +103,7 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                     "description" to projetoResult.getOrThrow().description,
                     "text" to projetoResult.getOrThrow().text,
                     "githubUrl" to projetoResult.getOrThrow().gitHubUrl,
+                    "downloadUrl" to projetoResult.getOrThrow().downloadUrl,
                     "tags" to projetoResult.getOrThrow().tags.joinToString(","),
                     "importance" to projetoResult.getOrThrow().importance,
                     )))
@@ -115,6 +120,7 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
             var description = ""
             var text = ""
             var githubUrl = ""
+            var downloadUrl = ""
             var tags = listOf<String>()
             var imageOriginalName = ""
             var imageBytes: ByteArray? = null
@@ -128,6 +134,7 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                             "description" -> description = part.value
                             "text" -> text = part.value
                             "githubUrl" -> githubUrl = part.value
+                            "downloadUrl" -> downloadUrl = part.value
                             "tags" -> tags = part.value.split(",")
                             "importance" -> importance = part.value.toIntOrNull()
 
@@ -150,6 +157,7 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                 description = description,
                 text = text,
                 gitHubUrl = githubUrl,
+                downloadUrl = downloadUrl,
                 imageOriginalName = imageOriginalName,
                 imageBytes = imageBytes,
                 tags = tags,
@@ -167,6 +175,7 @@ fun Route.projetoRoutes(projetoService: ProjetoService) {
                         "description" to description,
                         "text" to text,
                         "githubUrl" to githubUrl,
+                        "downloadUrl" to downloadUrl,
                         "tags" to tags.joinToString(","),
                         "importance" to importance
                     )))

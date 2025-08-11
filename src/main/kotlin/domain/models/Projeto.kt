@@ -8,7 +8,7 @@ data class Projeto (
     val description: String,
     val text: String,
     val gitHubUrl: String?,
-//    val downloadUrl: String?,
+    val downloadUrl: String?,
     val tags: List<String> = emptyList(),
     val imagePath: String,
     val historicos: List<Historico> = emptyList(),

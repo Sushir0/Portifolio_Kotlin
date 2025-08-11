@@ -58,6 +58,10 @@
                 <label class="form-label">URL do GitHub</label>
                 <input type="url" class="form-control" name="githubUrl" value="<#if githubUrl??>${githubUrl}</#if>">
             </div>
+            <div class="mb-3">
+                <label class="form-label">URL do Download</label>
+                <input type="url" class="form-control" name="downloadUrl" value="<#if downloadUrl??>${downloadUrl}</#if>">
+            </div>
 
             <div class="mb-3">
                 <label class="form-label">Imagem Principal</label>

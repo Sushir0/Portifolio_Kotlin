@@ -67,6 +67,11 @@
             </div>
 
             <div class="mb-3">
+                <label class="form-label">URL do Download</label>
+                <input type="url" class="form-control" name="downloadUrl" value="${(downloadUrl)!}">
+            </div>
+
+            <div class="mb-3">
                 <label class="form-label">Imagem Principal (Se não quiser modificar, deixe em branco)</label>
                 <input type="file" class="form-control" name="image" accept="image/*">
             </div>

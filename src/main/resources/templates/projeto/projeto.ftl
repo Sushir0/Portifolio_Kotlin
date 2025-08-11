@@ -56,6 +56,11 @@
                         <i class="fab fa-github"></i> Ver no GitHub
                     </a>
                 </#if>
+                <#if projeto.downloadUrl?has_content>
+                    <a href="${projeto.downloadUrl}" target="_blank" class="btn btn-primary btn-github" aria-label="Baixar projeto">
+                        <i class="fab fa-google-play"></i> Baixar Aplicativo
+                    </a>
+                </#if>
                 <div class="project-tags mt-3 mb-4" aria-label="Tecnologias utilizadas no projeto" tabindex="0">
                     <#list projeto.tags as tag>
                         <span class="badge-tech badge-tech-${tag?lower_case}">${tag}</span>
