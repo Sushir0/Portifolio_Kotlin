@@ -51,6 +51,9 @@ fun Route.mainRoutes(
     get("/finaceProject/privacy"){
         call.respond(FreeMarkerContent("finaceProject/privacy.ftl", emptyMap<String, Any>()))
     }
+    get("/finaceProject/deleteAccount"){
+        call.respond(FreeMarkerContent("finaceProject/deleteAccount.ftl", emptyMap<String, Any>()))
+    }
 
     static("/static") {
         resources("static")
