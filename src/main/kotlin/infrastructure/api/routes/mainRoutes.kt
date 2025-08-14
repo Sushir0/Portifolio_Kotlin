@@ -44,6 +44,14 @@ fun Route.mainRoutes(
             call.respondText("Failed to load projects", status = HttpStatusCode.InternalServerError)
         }
     }
+
+    get("/finaceProject/terms"){
+        call.respond(FreeMarkerContent("finaceProject/terms.ftl", emptyMap<String, Any>()))
+    }
+    get("/finaceProject/privacy"){
+        call.respond(FreeMarkerContent("finaceProject/privacy.ftl", emptyMap<String, Any>()))
+    }
+
     static("/static") {
         resources("static")
     }
