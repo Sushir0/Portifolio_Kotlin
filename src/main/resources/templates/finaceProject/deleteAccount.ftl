@@ -22,33 +22,54 @@
   </div>
 </nav>
 
+
 <div class="container">
 
   <!-- ENGLISH -->
   <div id="en" class="lang">
-      <h1>Account Deletion Information</h1>
+      <h1>Account and Data Management – Finace App</h1>
       <p><em>Language: Portuguese (app not translated to English yet)</em></p>
-      <p>To delete your account in the <strong>Finace</strong> app, follow the steps below:</p>
+
+      <h2>To delete your account:</h2>
       <ol>
-          <li>Open the Finace app.</li>
-          <li>Go to the <strong>Configurações</strong> menu.</li>
-          <li>Select the <strong>Excluir Conta</strong> option.</li>
-          <li>Confirm the deletion.</li>
+          <li>Open the <strong>Finace</strong> app.</li>
+          <li>Go to <strong>Configurações</strong> (Settings).</li>
+          <li>Select <strong>Configurações da Conta</strong> (Account Settings).</li>
+          <li>Tap <strong>Apagar Conta</strong> (Delete Account).</li>
       </ol>
-      <p>If you prefer, send an email to <a href="mailto:finace.projeto@gmail.com">finace.projeto@gmail.com</a> requesting the deletion.</p>
+
+      <h2>To reset your account and start fresh:</h2>
+      <ol>
+          <li>Open the <strong>Finace</strong> app.</li>
+          <li>Go to <strong>Configurações</strong> (Settings).</li>
+          <li>Select <strong>Configurações da Conta</strong> (Account Settings).</li>
+          <li>Tap <strong>Reiniciar Conta</strong> (Reset Account).</li>
+      </ol>
+
+      <p>This will permanently remove your transactions, categories, and household data, allowing you to start your account from scratch.</p>
   </div>
 
   <!-- PORTUGUESE -->
   <div id="pt" class="lang">
-    <h1>Excluir Conta</h1>
-    <p>Para excluir sua conta no aplicativo <strong>Finance</strong>, siga os passos abaixo:</p>
-    <ol>
-        <li>Abra o aplicativo Finance.</li>
-        <li>Acesse o menu <strong>Configurações</strong>.</li>
-        <li>Selecione a opção <strong>Excluir Conta</strong>.</li>
-        <li>Confirme a exclusão.</li>
-    </ol>
-    <p>Se preferir, envie um e-mail para <a href="mailto:suporte@finance.com">suporte@finance.com</a> solicitando a exclusão.</p>
+      <h1>Gerenciamento de Conta e Dados – Finace App</h1>
+
+      <h2>Para excluir sua conta:</h2>
+      <ol>
+          <li>Abra o aplicativo <strong>Finace</strong>.</li>
+          <li>Acesse <strong>Configurações</strong>.</li>
+          <li>Selecione <strong>Configurações da Conta</strong>.</li>
+          <li>Toque em <strong>Apagar Conta</strong>.</li>
+      </ol>
+
+      <h2>Para reiniciar sua conta e começar do zero:</h2>
+      <ol>
+          <li>Abra o aplicativo <strong>Finace</strong>.</li>
+          <li>Acesse <strong>Configurações</strong>.</li>
+          <li>Selecione <strong>Configurações da Conta</strong>.</li>
+          <li>Toque em <strong>Reiniciar Conta</strong>.</li>
+      </ol>
+
+      <p>Isso removerá permanentemente suas transações, categorias e dados da casa, permitindo começar sua conta do zero.</p>
   </div>
 
 </div>
